@@ -41,8 +41,25 @@ if(dir==='left'||dir==='right'){
       if(b&&b.value===a.value){result.push({v:a.value*2,from:[a,b]});i++}else{result.push({v:a.value,from:[a]})}
     }
     let pos=0
-    for(const rItem of result){for(const f of rItem.from){const nc=dir==='left'?pos:(size-1-pos);if(f.c!==nc)moved=true;f.c=nc;f.r=r}pos++}
-    for(const rItem of result){if(rItem.from.length===2){const [a,b]=rItem.from;tiles=tiles.filter(x=>x!==b);a.value=rItem.v;a.merged=true;gain+=rItem.v}}
+    for(const rItem of result){
+      const nc=dir==='left'?pos:(size-1-pos);
+      if(rItem.from.length===2){
+        const [a,b]=rItem.from;
+        if(a.c!==nc||b.c!==nc)moved=true;
+        tiles=tiles.filter(x=>x!==b);
+        a.value=rItem.v;
+        a.merged=true;
+        a.c=nc;
+        a.r=r;
+        gain+=rItem.v;
+      }else{
+        const tile=rItem.from[0];
+        if(tile.c!==nc)moved=true;
+        tile.c=nc;
+        tile.r=r;
+      }
+      pos++;
+    }
   }
 }
 if(dir==='up'||dir==='down'){
@@ -58,8 +75,25 @@ if(dir==='up'||dir==='down'){
       if(b&&b.value===a.value){result.push({v:a.value*2,from:[a,b]});i++}else{result.push({v:a.value,from:[a]})}
     }
     let pos=0
-    for(const rItem of result){for(const f of rItem.from){const nr=dir==='up'?pos:(size-1-pos);if(f.r!==nr)moved=true;f.r=nr;f.c=c}pos++}
-    for(const rItem of result){if(rItem.from.length===2){const [a,b]=rItem.from;tiles=tiles.filter(x=>x!==b);a.value=rItem.v;a.merged=true;gain+=rItem.v}}
+    for(const rItem of result){
+      const nr=dir==='up'?pos:(size-1-pos);
+      if(rItem.from.length===2){
+        const [a,b]=rItem.from;
+        if(a.r!==nr||b.r!==nr)moved=true;
+        tiles=tiles.filter(x=>x!==b);
+        a.value=rItem.v;
+        a.merged=true;
+        a.r=nr;
+        a.c=c;
+        gain+=rItem.v;
+      }else{
+        const tile=rItem.from[0];
+        if(tile.r!==nr)moved=true;
+        tile.r=nr;
+        tile.c=c;
+      }
+      pos++;
+    }
   }
 }
 if(moved){if(gain>0){updateScore(gain);beep()}animate();spawn();vibrate(12);if(tiles.some(t=>t.value>=2048)&&!keepPlaying){overlayText.textContent='达成 2048！';overlay.classList.remove('hidden')}else if(!canMove()){overlayText.textContent='没有可移动的步数';overlay.classList.remove('hidden')}}}
