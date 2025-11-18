@@ -1,0 +1,21 @@
+{
+  "name": "apple-2048",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "serve -s www -l 5173",
+    "cap:add:android": "cap add android",
+    "cap:sync": "cap sync",
+    "cap:open": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.2.0"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^6.2.0",
+    "@capacitor/cli": "^6.2.0",
+    "serve": "^14.2.1",
+    "typescript": "^5.9.3"
+  }
+}

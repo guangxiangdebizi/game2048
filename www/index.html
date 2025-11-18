@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>2048</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="head">
+        <div class="title">2048</div>
+        <div class="score-wrap">
+          <div class="score-box">
+            <div class="label">分数</div>
+            <div id="score" class="value">0</div>
+          </div>
+          <div class="score-box">
+            <div class="label">最佳</div>
+            <div id="best" class="value">0</div>
+          </div>
+        </div>
+        <button id="newGame" class="btn">新游戏</button>
+      </header>
+
+      <div class="board-wrap">
+        <div id="board" class="board"></div>
+        <div id="overlay" class="overlay hidden">
+          <div id="overlayText" class="overlay-text"></div>
+          <div class="overlay-actions">
+            <button id="keepGoing" class="btn ghost">继续挑战</button>
+            <button id="restart" class="btn">重新开始</button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="tips">在键盘使用方向键，或在手机上滑动</footer>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>
