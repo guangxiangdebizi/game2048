@@ -1,43 +1,56 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>2048</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="app">
-      <header class="head">
-        <div class="title">2048</div>
-        <div class="score-wrap">
-          <div class="score-box">
-            <div class="label">分数</div>
-            <div id="score" class="value">0</div>
-          </div>
-          <div class="score-box">
-            <div class="label">最佳</div>
-            <div id="best" class="value">0</div>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>2048 游戏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title-section">
+        <h1 class="title">2048</h1>
+        <p class="subtitle">合并方块，达到2048！</p>
+      </div>
+      
+      <div class="scores">
+        <div class="score-box">
+          <div class="score-label">得分</div>
+          <div class="score-value" id="score">0</div>
         </div>
-        <button id="newGame" class="btn">新游戏</button>
-      </header>
+        <div class="score-box">
+          <div class="score-label">最高</div>
+          <div class="score-value" id="best">0</div>
+        </div>
+      </div>
+    </div>
 
-      <div class="board-wrap">
-        <div id="board" class="board"></div>
-        <div id="overlay" class="overlay hidden">
-          <div id="overlayText" class="overlay-text"></div>
-          <div class="overlay-actions">
-            <button id="keepGoing" class="btn ghost">继续挑战</button>
-            <button id="restart" class="btn">重新开始</button>
+    <div class="controls">
+      <button class="btn btn-new" id="new-game">新游戏</button>
+    </div>
+
+    <div class="game-container">
+      <div class="grid-container" id="grid-container"></div>
+      
+      <div class="message-container hidden" id="message-container">
+        <div class="message-content">
+          <p class="message-text" id="message-text">游戏结束！</p>
+          <div class="message-buttons">
+            <button class="btn btn-primary" id="try-again">再试一次</button>
+            <button class="btn btn-secondary hidden" id="continue-button">继续游戏</button>
           </div>
         </div>
       </div>
-
-      <footer class="tips">在键盘使用方向键，或在手机上滑动</footer>
     </div>
-    <script src="game.js"></script>
-  </body>
+
+    <div class="instructions">
+      <p><strong>如何游玩：</strong></p>
+      <p>使用方向键（←↑→↓）或在触摸屏上滑动来移动方块。</p>
+      <p>相同数字的方块会合并成它们的和！</p>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
 </html>
