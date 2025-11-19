@@ -1,133 +1,180 @@
-# ==========================================
-# 2048 Game Project - .gitignore
-# ==========================================
+# ============================================
+# 2048 游戏项目 - Git 忽略文件
+# ============================================
 
-# ============ Node.js ============
+# ==================== Node.js ====================
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
 
-# ============ Capacitor ============
-# Capacitor生成的配置文件
+# ==================== 依赖目录 ====================
+jspm_packages/
+
+# ==================== 编译输出 ====================
+dist/
+build/
+out/
+*.log
+
+# ==================== Capacitor ====================
+# 生成的配置文件
 android/app/src/main/assets/capacitor.config.json
-android/app/src/main/assets/capacitor.plugins.json
-
-# Web资源会自动同步，不需要提交
 android/app/src/main/assets/public/
 
 # iOS (如果将来添加)
-ios/App/App/capacitor.config.json
-ios/App/App/public/
+ios/App/public/
+ios/App/capacitor.config.json
 
-# ============ Android ============
-# Gradle构建文件
+# ==================== Android ====================
+# Gradle 缓存
 android/.gradle/
 android/build/
 android/captures/
-android/app/build/
-android/capacitor-cordova-android-plugins/build/
-android/capacitor-android/build/
+android/local.properties
+android/.externalNativeBuild
+android/.cxx
+android/*/build/
 
-# Android Studio生成的文件
+# Android Studio
 android/.idea/
 android/*.iml
-android/.externalNativeBuild
-android/.cxx/
-android/local.properties
+android/.DS_Store
 
-# APK文件
+# APK 和 AAB 文件（发布版本）
+android/app/build/
+android/app/release/
 *.apk
 *.aab
+*.ap_
+*.dex
 
-# Keystore文件（重要！不要上传密钥）
-*.jks
+# Keystore 文件（⚠️ 非常重要！千万不要上传密钥！）
 *.keystore
-key.properties
+*.jks
+game2048-release-key.keystore
 
-# ============ IDE ============
+# Proguard
+android/proguard/
+android/app/proguard-rules.pro
+
+# ==================== IDE 配置 ====================
 # Visual Studio Code
 .vscode/
 *.code-workspace
 
-# WebStorm / IntelliJ IDEA
+# JetBrains IDEs (IntelliJ, Android Studio, WebStorm)
 .idea/
 *.iml
 *.iws
 *.ipr
+out/
 
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
+# Eclipse
+.classpath
+.project
+.settings/
 
-# Atom
-.atom/
-
-# ============ 操作系统 ============
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-*.lnk
-
+# ==================== 操作系统 ====================
 # macOS
 .DS_Store
 .AppleDouble
 .LSOverride
+Icon
 ._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
 
 # Linux
 *~
+.fuse_hidden*
 .directory
+.Trash-*
+.nfs*
 
-# ============ 日志文件 ============
-*.log
-logs/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# ============ 临时文件 ============
+# ==================== 临时文件 ====================
 *.tmp
 *.temp
 *.swp
 *.swo
-*~
-.cache/
+*~.nib
+*.bak
+*.cache
 
-# ============ 测试覆盖率 ============
+# ==================== 测试覆盖率 ====================
 coverage/
-.nyc_output/
+*.lcov
+.nyc_output
 
-# ============ 环境变量 ============
+# ==================== 环境变量 ====================
 .env
 .env.local
-.env.development
-.env.test
-.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
 
-# ============ 备份文件 ============
-*.bak
-*.backup
-*.old
+# ==================== 日志文件 ====================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pids/
+*.pid
+*.seed
+*.pid.lock
 
-# ============ 压缩文件 ============
-*.zip
-*.tar
-*.tar.gz
-*.rar
-*.7z
+# ==================== 发布文件 ====================
+# 本地构建的发布文件（不要上传到 Git）
+2048-*.apk
+2048-*.aab
+app-release.apk
+app-release.aab
+app-debug.apk
 
-# ============ Android SDK ============
-# 本地Android SDK路径
-C:/Android/
+# 发布脚本生成的文件
+2048-Release/
 
-# ============ 其他 ============
-# 锁文件
+# ==================== 资源生成 ====================
+# Capacitor Assets 生成的临时文件
+resources/.DS_Store
+
+# ==================== 其他 ====================
+# Lock files
 .lock-wscript
+
+# TypeScript cache
+*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
@@ -135,36 +182,88 @@ C:/Android/
 # Optional eslint cache
 .eslintcache
 
-# Parcel cache
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
 .parcel-cache
 
-# Next.js
-.next/
-out/
+# Next.js build output
+.next
+out
 
-# Nuxt.js
-.nuxt/
-dist/
+# Nuxt.js build / generate output
+.nuxt
+dist
 
-# Gatsby
+# Gatsby files
 .cache/
-public/
+public
 
-# Serverless
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
 .serverless/
 
-# FuseBox
+# FuseBox cache
 .fusebox/
 
-# DynamoDB Local
+# DynamoDB Local files
 .dynamodb/
 
-# TernJS
+# TernJS port file
 .tern-port
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# Output of 'npm pack'
-*.tgz
+# Temporary folders
+tmp/
+temp/
 
+# ==================== 自定义排除 ====================
+# 您的自定义脚本生成的临时文件
+wait-and-copy.ps1
+build-release.ps1
+
+# 备份文件
+*.backup
+*.old
+
+# ==================== 但是要包含这些 ====================
+# 确保这些重要文件被包含
+!.gitignore
+!README.md
+!LICENSE
+!package.json
+
+# 确保源代码被包含
+!www/
+!resources/
+
+# ==================== 说明 ====================
+# 注意事项：
+# 1. *.keystore 文件已被排除 - 这是您的签名密钥，绝对不能上传！
+# 2. node_modules/ 已被排除 - 依赖项会从 package.json 重新安装
+# 3. build/ 目录已被排除 - 构建产物可以重新生成
+# 4. .env 文件已被排除 - 可能包含敏感信息
+# 5. APK/AAB 文件已被排除 - 发布包不应该在 Git 中
+
+# ⚠️ 重要提醒：
+# - 请务必将 game2048-release-key.keystore 备份到安全的地方
+# - 不要将密钥文件提交到 Git！
+# - 如果不小心提交了密钥，需要重新生成并撤销旧密钥
